@@ -4,7 +4,7 @@ var ItemView = Backbone.View.extend({
 
   initialize: function() {
     this.render();
-    $('.jumbotron').append( this.el );
+    $('.item-viewer').html( this.el );
   },
 
   renderTemplate: _.template($('#item-view-template').text()),
@@ -12,4 +12,5 @@ var ItemView = Backbone.View.extend({
   render: function () {
     this.$el.html(this.renderTemplate(this.model));
   }
+
 })

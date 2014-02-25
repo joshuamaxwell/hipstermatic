@@ -1,5 +1,7 @@
 console.log('\'Allo \'Allo!');
 
+router = new MainRouter;
+
 $.ajax({
 
   dataType: 'jsonp',
@@ -9,11 +11,11 @@ $.ajax({
   data: '',
 
   success: function (results) {
-    console.log(results.results);
-    var etsyItems = new EtsyItemsCollection(results.results);
+    etsyItems = new EtsyItemsCollection(results.results);
     etsyItems.each( function(item) {
-      new ItemView(item);
+      new ListView(item);
     })
+    Backbone.history.start();
   },
 
   error: function (msg) {
