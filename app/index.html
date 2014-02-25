@@ -67,10 +67,30 @@
 
         </div>
 
+        <script type="text/template" id="item-view-template">
+            <div class="panel-body">
+                <div class="row">
+                    <img class="col-md-3 col-xs-12"src="<%= this.attributes.Images[0].url_fullxfull %>">
+                    <div class="info col-md-9 col-xs-12">        
+                        <h3 class="title text-left"><%= this.attributes.title %></h3>
+                        <h4 class="price text-muted text-right"><%= this.attributes.price %></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="description small col-xs-12 text-left"><%= this.attributes.description %></p>
+                </div>
+            </div>
+            <div class="panel-footer text-right">
+                <a class="item-link" href="<%= this.attributes.url %>">view on etsy.com</a>
+            </div>
+
+        </script>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -100,6 +120,8 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/etsy-item.js"></script>
+        <script src="scripts/item-view.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
