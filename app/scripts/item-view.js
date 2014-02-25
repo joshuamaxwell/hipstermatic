@@ -13,4 +13,4 @@ var ItemView = Backbone.View.extend({
     this.$el.html(this.renderTemplate(this.model));
   }
 
-})
+});
