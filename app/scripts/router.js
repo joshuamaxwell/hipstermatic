@@ -19,15 +19,14 @@ var MainRouter = Backbone.Router.extend({
   },
 
   itemView: function(id) {
-    // if(id && etsyItems){
       
-      var item = etsyItems.find(function(item){
-        return item.get('listing_id') == id;
-      });
+    var item = etsyItems.find(function(item){
+      return item.get('listing_id') == id;
+    });
 
-      // console.log('switched to viewing item number', id, 'model       ', item);
-      new ItemView({model: item});
+    // console.log('switched to viewing item number', id, 'model       ', item);
+    new ItemView({model: item});
 
-    }
-  // }
+  }
+
 });
