@@ -1,6 +1,7 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'compass/reset';
+@import 'compass/css3';
 @import 'sass-bootstrap/lib/bootstrap';
 
 .browsehappy {
@@ -17,6 +18,14 @@ body {
 
 .page-title {
     margin-bottom: 20px;
+}
+
+.search-again {
+    @include transition(all 1s ease 1s);
+    opacity: 1;
+    &.cleared-out{
+    opacity: 0;
+    }
 }
 
 .item-view {

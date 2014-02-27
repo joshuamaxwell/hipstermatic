@@ -36,6 +36,18 @@ var EtsyItemsCollection = Backbone.Collection.extend({
         $('.list-viewer').removeClass('hide');
         new ItemView({model: etsyItems.first()})
       };
+    };
+
+    this.hipstermaticFetch = function(fetchObject){
+      var twoHipsterWords = hipsterWords.gimmeTwo();
+
+      etsyItems.keywords = twoHipsterWords.join('+'); //that + took forever to figure out
+      console.log('keywords   ' , etsyItems.keywords);
+      //the following line should come from a template
+      $('.page-title').html('Hipstermatic Etsy Browser<br>Searching for <span class="keywords">' + twoHipsterWords.join(' and ') + '</span>. . .  ');
+      $('.page-title').append('<p class="small search-again cleared-out">too many people know about this already?     <button type="button" class="btn btn-default btn-lg hipstermatic-search-btn"><span class="glyphicon glyphicon-search"></span> Be Unique-er</button></p>');
+      console.log('url   ', etsyItems.url());
+      etsyItems.fetch(fetchObject);
     }
   },
 

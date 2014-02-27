@@ -1,4 +1,3 @@
-// console.log('\'Allo \'Allo!');
 Parse.initialize("gCR9KS7rXD7MlaTjdrGcf9DdDcoDZG5lqIZiVoPe", "4XKF3hLDAceJzKDSAne42qDm2AJTKgNGXxnH9Nlg");
 var TestObject = Parse.Object.extend("TestObject");
 var testObject = new TestObject();
@@ -6,50 +5,55 @@ testObject.save({foo: "bar"}).then(function(object) {
   console.log("yay! Parse worked");
 });
 
+
+
 etsyItems = new EtsyItemsCollection();
+router = new MainRouter();
+Backbone.history.start();
+
+//tell the button what to do when clicked
+$('.page-title').on('click','.hipstermatic-search-btn', function(){
+  etsyItems.hipstermaticFetch(fetchObject);
+})
 
 fetchObject = {
   success: function(){
-    etsyItems.fillItemList()
-    console.log('fetch is complete. etsyItems contains: ', etsyItems); 
-    var myNewChart = new Chart(ctx).Line(dataFunc());
+    if ( etsyItems.isEmpty() ){
+        console.log('no results... let us try something else...');
+        $('.search-again').addClass('cleared-out');
+        etsyItems.hipstermaticFetch(fetchObject);
+        //get the next two terms and search again
+      } else {
+        etsyItems.fillItemList()
+        console.log('fetch is complete. etsyItems contains: ', etsyItems); 
+        var myNewChart = new Chart(ctx).Line(dataFunc());
+        //make button show up after a couple seconds...
+        $('.search-again').removeClass('cleared-out');
+      }
   },
   error: function(){
     console.log('there was a problem with fetch');
   },
-  remove: false,
+  // remove: false, // i have removed this because i want my entire collection to reset
   dataType: 'jsonp' // have to do this to make etsy happy?
 }
-
-router = new MainRouter();
-Backbone.history.start();
 
 $.ajax({
   dataType: 'jsonp',
   url: 'http://jsonp.jit.su/?callback=?&url=http://hipsterjesus.com/api/?paras=1&type=hipster-centric&html=false',
   success: function(payload){
-    payload = payload.text.split(' ').slice(1,-1)
+    hipsterWords.paragraph = payload.text;
 
-    payload = _.reject(payload, function(word){
-      return word == ''
-    })
+    etsyItems.hipstermaticFetch(fetchObject);
 
-    payload = _.sample(payload, 2);
-
-    etsyItems.keywords = payload.join('+'); //that + took forever to figure out
-    console.log('keywords   ' , etsyItems.keywords);
-    $('.page-title').html('Hipstermatic<br>Etsy <span class="keywords">' + payload.join(' and ') + '</span> Browser');
-    console.log('url   ', etsyItems.url());
-    etsyItems.fetch(fetchObject);
   },
   error: function(){
     console.log('error');
   }
 });
 
-//Get context with jQuery - using jQuery's .get() method.
+
 var ctx = $("#myChart").get(0).getContext("2d");
-//This will get the first returned node in the jQuery collection.
 function dataFunc(){
     data = {
       labels: ["<20", "20-50", "50-150", "150-300", ">300"],
@@ -89,6 +93,8 @@ function dataFunc(){
 
   return data;
 }
+
+
 function erasedb () {
   $.get('http://tiny-pizza-server.herokuapp.com/collections/EtsyItemCollection',function(res){
     // console.log(res);
