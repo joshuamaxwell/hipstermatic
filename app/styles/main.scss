@@ -15,6 +15,10 @@ body {
     color: #333;
 }
 
+.page-title {
+    margin-bottom: 20px;
+}
+
 .item-view {
 
     img {
@@ -33,6 +37,9 @@ body {
     .hide {
         visibility: hidden;
     }
+    .list-view {
+        overflow: hidden;
+    }
 }
 
 canvas {
@@ -41,6 +48,12 @@ canvas {
 
 .keywords {
     color: #94C7C7;
+}
+
+#myChart {
+    width: 960px;
+    height: 400px;
+    margin: 20px auto;
 }
 
 // /* Everything but the jumbotron gets side spacing for mobile first views */

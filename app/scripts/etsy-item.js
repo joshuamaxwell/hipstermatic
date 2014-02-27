@@ -14,7 +14,7 @@ var EtsyItemsCollection = Backbone.Collection.extend({
 
   initialize: function(){
     this.endpoint = 'https://openapi.etsy.com/v2/listings/active.js?callback=randomFunction';
-    this.limit = 100;
+    this.limit = 20;
     this.sort_by = 'price';
     this.sort_order = 'down';
     this.keywords = 'bowtie,mens';
@@ -28,12 +28,12 @@ var EtsyItemsCollection = Backbone.Collection.extend({
     });
 
     this.fillItemList = function(){
-      $('.list-viewer').removeClass('hide');
       $('.list-viewer').empty();
       this.each(function(item){
         new ListView({model: item});      
       })
       if(etsyItems.first()){
+        $('.list-viewer').removeClass('hide');
         new ItemView({model: etsyItems.first()})
       };
     }
