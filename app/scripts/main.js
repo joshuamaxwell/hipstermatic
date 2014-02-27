@@ -1,61 +1,50 @@
 // console.log('\'Allo \'Allo!');
-
-router = new MainRouter();
+Parse.initialize("gCR9KS7rXD7MlaTjdrGcf9DdDcoDZG5lqIZiVoPe", "4XKF3hLDAceJzKDSAne42qDm2AJTKgNGXxnH9Nlg");
+var TestObject = Parse.Object.extend("TestObject");
+var testObject = new TestObject();
+testObject.save({foo: "bar"}).then(function(object) {
+  console.log("yay! Parse worked");
+});
 
 etsyItems = new EtsyItemsCollection();
-getAjaxData();
 
-
-// etsyItems.fetch({
-//   success: function(){
-//     console.log('fetch is complete. etsyItems contains: ', etsyItems); 
-//     etsyItems.each(function(item){
-//       new ListView({model: item});
-//     });
-//     getAjaxData();
-
-//   },
-
-//   error: function(){
-//     console.log('there was a problem with fetch');
-//   }
-
-// });
-
-function getAjaxData(){
-  console.log('getting data from etsy api...');
-  $.ajax({
-
-    dataType: 'jsonp',
-
-    url:'https://openapi.etsy.com/v2/listings/active.js?callback=etsyResults&fields=title,price,description,listing_id,url&includes=Images',
-
-    data: {
-      api_key: 'kr9rjq7dc9c24jv6fccq2hus',
-      limit: 100,
-      sort_by: 'price',
-      sort_order: 'down',
-      // min_price: 500.00,
-      keywords: 'bowtie, mens'
-    },
-
-    success: function (responsePayload) {
-      etsyItems.add(responsePayload.results);
-      console.log('post ajax etsy items:    ', etsyItems);
-      etsyItems.each(function(item){
-        new ListView({model: item});
-      })
-
-      Backbone.history.start();
-
-    },
-
-    error: function (msg) {
-      console.log('error', msg.statusText);
-    }
-
-  });
+fetchObject = {
+  success: function(){
+    etsyItems.fillItemList()
+    console.log('fetch is complete. etsyItems contains: ', etsyItems); 
+  },
+  error: function(){
+    console.log('there was a problem with fetch');
+  },
+  remove: false,
+  dataType: 'jsonp' // have to do this to make etsy happy?
 }
+
+router = new MainRouter();
+Backbone.history.start();
+
+$.ajax({
+  dataType: 'jsonp',
+  url: 'http://jsonp.jit.su/?callback=?&url=http://hipsterjesus.com/api/?paras=1&type=hipster-centric&html=false',
+  success: function(payload){
+    payload = payload.text.split(' ').slice(1,-1)
+
+    payload = _.reject(payload, function(word){
+      return word == ''
+    })
+
+    payload = _.sample(payload, 2);
+
+    etsyItems.keywords = payload.join('+'); //that + took forever to figure out
+    console.log('keywords   ' , etsyItems.keywords);
+    $('.page-title').html('Hipstermatic<br>Etsy <span class="keywords">' + payload.join(' and ') + '</span> Browser');
+    console.log('url   ', etsyItems.url());
+    etsyItems.fetch(fetchObject);
+  },
+  error: function(){
+    console.log('error');
+  }
+});
 
 
 function erasedb () {
@@ -71,8 +60,3 @@ function erasedb () {
     }
   })
 }
-
-// $.getJSON('https://openapi.etsy.com/v2/listings/active.js?callback=?&api_key=kr9rjq7dc9c24jv6fccq2hus',
-//   function(results) {
-    // console.log('getJSON results       ', results);
-//   })

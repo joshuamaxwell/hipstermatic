@@ -12,20 +12,13 @@ var MainRouter = Backbone.Router.extend({
   },
 
   listView: function(){
-    $('.list-viewer').empty();
-    etsyItems.each(function(item){
-      new ListView({model: item});      
-    })
+    etsyItems.fillItemList();
   },
 
-  itemView: function(id) {
-      
-    var item = etsyItems.find(function(item){
-      return item.get('listing_id') == id;
-    });
+  itemView: function(listing_id) {
+    var item = etsyItems.findWhere({listing_id: Number(listing_id)}) //that didn't work without Number() because it was trying to match a string
 
-    // console.log('switched to viewing item number', id, 'model       ', item);
-    new ItemView({model: item});
+    if(item) new ItemView({model: item}); else location.hash='';    
 
   }
 

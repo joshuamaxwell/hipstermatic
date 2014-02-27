@@ -30,6 +30,17 @@ body {
 .list-viewer {
     overflow-y: scroll;
     height: 400px;
+    .hide {
+        visibility: hidden;
+    }
+}
+
+canvas {
+    outline: 1px solid gray;
+}
+
+.keywords {
+    color: #94C7C7;
 }
 
 // /* Everything but the jumbotron gets side spacing for mobile first views */
