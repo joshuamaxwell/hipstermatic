@@ -322,7 +322,7 @@ window.Chart = function(context){
     chart.Bar.defaults = {
       scaleOverlay : false,
       scaleOverride : true,
-      scaleSteps : 20,
+      scaleSteps : 10,
       scaleStepWidth : 2,
       scaleStartValue : 0,
       scaleLineColor : "rgba(0,0,0,.1)",
