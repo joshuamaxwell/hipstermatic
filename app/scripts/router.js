@@ -8,7 +8,8 @@ var MainRouter = Backbone.Router.extend({
   },
 
   initialize: function() {
-    // console.log('the router is born');
+    console.log('the router is born');
+    etsyItems.hipstermaticFetch(fetchObject);
   },
 
   listView: function(){

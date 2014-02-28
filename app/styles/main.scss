@@ -1,7 +1,7 @@
-$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 
 @import 'compass/reset';
 @import 'compass/css3';
+$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 @import 'sass-bootstrap/lib/bootstrap';
 
 .browsehappy {
@@ -27,6 +27,13 @@ body {
     opacity: 0;
     }
 }
+
+#chart-container{
+    display:block;
+    width:80%;
+    padding:50px 10%;
+    height:300px;
+} 
 
 .item-view {
 
