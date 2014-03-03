@@ -6,9 +6,13 @@ var hipsterWords = {
     this.paragraph = this.paragraph.replace(",","");
     this.paragraph = this.paragraph.replace(".","");
     this.paragraph = this.paragraph.replace("of ","");
-    this.paragraph = this.paragraph.replace("it ","");
-    this.paragraph = this.paragraph.replace("me ","");
-    this.paragraph = this.paragraph.replace("you ","");
+    this.paragraph = this.paragraph.replace("it","");
+    this.paragraph = this.paragraph.replace("me","");
+    this.paragraph = this.paragraph.replace("you","");
+    this.paragraph = this.paragraph.replace("they","");
+    this.paragraph = this.paragraph.replace("a","");
+    this.paragraph = this.paragraph.replace("before","");
+    this.paragraph = this.paragraph.replace("them","");
     paragraphArray = this.paragraph.split(' ').slice(1,-1)
 
     paragraphArray = _.reject(paragraphArray, function(word){
