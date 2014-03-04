@@ -18,8 +18,8 @@ var MainRouter = Backbone.Router.extend({
 
   itemView: function(listing_id) {
     var item = etsyItems.findWhere({listing_id: Number(listing_id)}) //that didn't work without Number() because it was trying to match a string
-
     if(item) new ItemView({model: item}); else location.hash='';    
+    // $('.list-viewer').height($('.item-viewer').height()-20);
 
   }
 

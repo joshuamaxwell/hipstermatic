@@ -16,13 +16,20 @@ body {
     color: #333;
 }
 
-.page-title {
+
+.jumbotron {
+    padding-top: 0;
+    margin: 0px;
+}
+
+.search-controls {
     margin-bottom: 20px;
 }
 
 .search-again {
     @include transition(all 1s ease 1s);
     opacity: 1;
+    line-height: 0;
     &.cleared-out{
     opacity: 0;
     }
@@ -41,6 +48,8 @@ body {
 
         display: inline-block;
     }
+    .description {
+    }
     .info {
         display: inline-block;
     }
@@ -48,18 +57,22 @@ body {
 }
 
 .list-viewer {
-    overflow-y: scroll;
-    height: 400px;
+    // overflow-y: scroll;
+    // min-height: 300px;
+    padding-right: 0;
     .hide {
-        visibility: hidden;
+        // visibility: hidden;
     }
     .list-view {
         overflow: hidden;
+        position: static;
+        img {
+        }
     }
 }
 
 canvas {
-    outline: 1px solid gray;
+    // outline: 1px solid gray;
 }
 
 .keywords {
@@ -70,6 +83,12 @@ canvas {
     width: 960px;
     height: 400px;
     margin: 20px auto;
+}
+
+.footer {
+    background: #94C7C7;
+    padding: 30px;
+    color: white;
 }
 
 // /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -115,26 +134,36 @@ canvas {
 // }
 
 /* Responsive: Portrait tablets and up */
-// @media screen and (min-width: 768px) {
-//     .container {
-//         max-width: 960px;
-//     }
-
-//     /* Remove the padding we set earlier */
-//     .header,
-//     .marketing,
-//     .footer {
-//         padding-left: 0;
-//         padding-right: 0;
-//     }
-
-//     /* Space out the masthead */
-//     .header {
-//         margin-bottom: 30px;
-//     }
+@media screen and (max-width: 992px) {
+    .search-again {
+        color: red;
+    }
+    .page-title {
+        margin: 90px auto 10px;
+    }
+    .search-controls {
+        margin: 0 auto;
+        position: fixed;
+        background: rgba(238, 238, 238, 0.8);
+        z-index: 100;
+        padding: 5px 0;
+        top: 0;
+    }
     
-//     /* Remove the bottom border on the jumbotron for visual effect */
-//     .jumbotron {
-//         border-bottom: 0;
-//     }
-// }
+    .list-viewer {
+        // margin-top: 100px;
+        position: static;
+        .list-group-item {
+            overflow: hidden;
+            height: 300px;
+            margin: 10px auto;
+                img {
+                    margin-top: -10px;
+                }
+                .title {
+                    // position: absolute;
+                    // background: rgba(245, 245, 245, 0.7);
+                }
+        }
+    }
+}

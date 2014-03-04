@@ -1,9 +1,9 @@
-Parse.initialize("gCR9KS7rXD7MlaTjdrGcf9DdDcoDZG5lqIZiVoPe", "4XKF3hLDAceJzKDSAne42qDm2AJTKgNGXxnH9Nlg");
-var TestObject = Parse.Object.extend("TestObject");
-var testObject = new TestObject();
-testObject.save({foo: "bar"}).then(function(object) {
-  console.log("yay! Parse worked");
-});
+// Parse.initialize("gCR9KS7rXD7MlaTjdrGcf9DdDcoDZG5lqIZiVoPe", "4XKF3hLDAceJzKDSAne42qDm2AJTKgNGXxnH9Nlg");
+// var TestObject = Parse.Object.extend("TestObject");
+// var testObject = new TestObject();
+// testObject.save({foo: "bar"}).then(function(object) {
+//   console.log("yay! Parse worked");
+// });
 
 //to get the chart context
 var ctx = $("#myChart").get(0).getContext("2d");
@@ -18,15 +18,15 @@ var container = $(c).parent();
 $(window).resize( myChart );
 
 function myChart(){ 
-    c.attr('width', $(container).width() ); //max width
-    // c.attr('height', $(container).height() ); //max height
+    c.attr('width', $(container).width()); //max width
+    c.attr('height', $(container).height() * 0.75 ); //max height
 
     //Call a function to redraw other content (texts, images etc)
     var myNewChart = new Chart(ctx).Bar(dataFunc());
 }
 
 //tell the button what to do when clicked
-$('.page-title').on('click','.hipstermatic-search-btn', function(){
+$('.search-controls').on('click','.hipstermatic-search-btn', function(){
   etsyItems.hipstermaticFetch(fetchObject);
 })
 
@@ -34,7 +34,7 @@ $('.page-title').on('click','.hipstermatic-search-btn', function(){
 fetchObject = {
   success: function(){
     if ( etsyItems.isEmpty() ){
-        console.log('no results... let us try something else...');
+        console.log('no results... let\'s try something else...');
         $('.search-again').addClass('cleared-out');
         etsyItems.hipstermaticFetch(fetchObject);
         //get the next two terms and search again

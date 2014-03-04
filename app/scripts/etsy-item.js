@@ -33,8 +33,10 @@ var EtsyItemsCollection = Backbone.Collection.extend({
         new ListView({model: item});      
       })
       if(etsyItems.first()){
-        $('.list-viewer').removeClass('hide');
+        // $('.list-viewer').removeClass('hide');
         new ItemView({model: etsyItems.first()})
+        location.hash = 'items/' + etsyItems.first().get('listing_id');
+        console.log('item-viewer height:   ', $('.item-viewer').height());
       };
     };
 
@@ -44,8 +46,8 @@ var EtsyItemsCollection = Backbone.Collection.extend({
       etsyItems.keywords = twoHipsterWords.join('+'); //that + took forever to figure out
       console.log('keywords   ' , etsyItems.keywords);
       //the following line should come from a template
-      $('.page-title').html('Hipstermatic Etsy Browser<br>Searching for <span class="keywords">' + twoHipsterWords.join(' and ') + '</span>. . .  ');
-      $('.page-title').append('<p class="small search-again cleared-out">too many people know about this already?     <button type="button" class="btn btn-default btn-lg hipstermatic-search-btn">Be Unique-er</button></p>');
+      $('.search-controls').html('Searching for <span class="keywords">' + twoHipsterWords.join(' and ') + '</span>. . .');
+      $('.search-controls').append('<span class="small search-again cleared-out"><br>too many people know about this already?     <button type="button" class="btn btn-default btn-lg hipstermatic-search-btn">Be Unique-er</button></span>');
       console.log('url   ', etsyItems.url());
       etsyItems.fetch(fetchObject);
     }
