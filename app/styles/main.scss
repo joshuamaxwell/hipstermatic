@@ -148,6 +148,9 @@ canvas {
         z-index: 100;
         padding: 5px 0;
         top: 0;
+        .keywords {
+            text-shadow: -1px 1px white;
+        }
     }
     
     .list-viewer {
