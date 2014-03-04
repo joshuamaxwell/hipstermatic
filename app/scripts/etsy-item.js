@@ -1,9 +1,8 @@
 var EtsyItem = Backbone.Model.extend({
 
-  idAttribute: 'listing_id', // listing_id is not what i need here
+  idAttribute: 'listing_id', 
 
   initialize: function () {
-    // this.set({id: this.get('listing_id')});
   }
 
 });
@@ -33,22 +32,17 @@ var EtsyItemsCollection = Backbone.Collection.extend({
         new ListView({model: item});      
       })
       if(etsyItems.first()){
-        // $('.list-viewer').removeClass('hide');
         new ItemView({model: etsyItems.first()})
         location.hash = 'items/' + etsyItems.first().get('listing_id');
-        console.log('item-viewer height:   ', $('.item-viewer').height());
       };
     };
 
     this.hipstermaticFetch = function(fetchObject){
-      var twoHipsterWords = hipsterWords.gimmeTwo();
-
+      var twoHipsterWords = hipsterWords.sample(2);
       etsyItems.keywords = twoHipsterWords.join('+'); //that + took forever to figure out
-      console.log('keywords   ' , etsyItems.keywords);
-      //the following line should come from a template
+      //the following lines should eventually come from a template
       $('.search-controls').html('Searching for <span class="keywords">' + twoHipsterWords.join(' and ') + '</span>. . .');
       $('.search-controls').append('<span class="small search-again cleared-out"><br>too many people know about this already?     <button type="button" class="btn btn-default btn-lg hipstermatic-search-btn">Be Unique-er</button></span>');
-      console.log('url   ', etsyItems.url());
       etsyItems.fetch(fetchObject);
     }
   },
@@ -58,7 +52,7 @@ var EtsyItemsCollection = Backbone.Collection.extend({
   },
 
   comparator: function(item){
-    return -(item.get('price')); // to sort by price descending!
+    return -(item.get('price')); // to sort by price descending! also a query string param for etsy
   },
 
   url: function() {

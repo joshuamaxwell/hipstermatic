@@ -17,7 +17,6 @@ var ListView = Backbone.View.extend({
   },
 
   setHref: function(){
-    // console.log('line 20 list-view.js :    ', this.model.get('listing_id'));
     var id = this.model.get('listing_id');
     var link = '#/items/' + id;
     this.$el.attr({href: link});

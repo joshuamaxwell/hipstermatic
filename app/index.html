@@ -19,7 +19,6 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
         <script src="bower_components/modernizr/modernizr.js"></script>
-        <script src="//www.parsecdn.com/js/parse-1.2.17.min.js"></script>
         <!-- // <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 
     </head>
@@ -40,9 +39,6 @@
                     <div class="col-md-5 col-sm-12 list-viewer"></div>
                     <div class="col-md-7 hidden-sm hidden-xs item-viewer"></div>
                 </div>
-                <div class="chart-container col-xs-12 row">
-                    <canvas id="myChart" width="300" height="300"></canvas>
-                </div>
             </div>
 
             <div class="footer col-xs-12">
@@ -56,7 +52,7 @@
                 <span class="small text-muted price"> $<%= this.model.get('price') %></span>
                 <a class="item-link small hidden-md hidden-lg" href="<%= this.model.get('url') %>">view on etsy.com</a>
             </p>
-            <img class="col-xs-8 col-xs-offset-2 col-md-offset-0 col-md-3 col-md-pull-9" src="<%= this.model.get('Images')[0].url_570xN %>"/>
+            <img class="col-xs-offset-2 col-md-offset-0 col-md-3 col-md-pull-9" src="<%= this.model.get('Images')[0].url_570xN %>"/>
         </script>
 
         <script type="text/template" id="item-view-template">
@@ -114,7 +110,6 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/Chart.js"></script>
         <script src="scripts/router.js"></script>
         <script src="scripts/etsy-item.js"></script>
         <script src="scripts/item-view.js"></script>

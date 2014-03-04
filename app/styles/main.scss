@@ -11,7 +11,6 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
     padding: 0.2em 0;
 }
 
-/* Space out content a bit */
 body {
     color: #333;
 }
@@ -35,13 +34,6 @@ body {
     }
 }
 
-#chart-container{
-    display:block;
-    width:80%;
-    padding:50px 10%;
-    height:300px;
-} 
-
 .item-view {
 
     img {
@@ -57,32 +49,18 @@ body {
 }
 
 .list-viewer {
-    // overflow-y: scroll;
-    // min-height: 300px;
+
     padding-right: 0;
-    .hide {
-        // visibility: hidden;
-    }
+
     .list-view {
         overflow: hidden;
         position: static;
-        img {
-        }
-    }
-}
 
-canvas {
-    // outline: 1px solid gray;
+    }
 }
 
 .keywords {
     color: #94C7C7;
-}
-
-#myChart {
-    width: 960px;
-    height: 400px;
-    margin: 20px auto;
 }
 
 .footer {
@@ -91,49 +69,6 @@ canvas {
     color: white;
 }
 
-// /* Everything but the jumbotron gets side spacing for mobile first views */
-// .header,
-// .marketing,
-// .footer {
-//     padding-left: 15px;
-//     padding-right: 15px;
-// }
-
-/* Custom page header */
-// .header {
-//     border-bottom: 1px solid #e5e5e5;
-
-//     /* Make the masthead heading the same height as the navigation */
-//     h3 {
-//         margin-top: 0;
-//         margin-bottom: 0;
-//         line-height: 40px;
-//         padding-bottom: 19px;
-//     }
-// }
-
-/* Custom page footer */
-// .footer {
-//     padding-top: 19px;
-//     color: #777;
-//     border-top: 1px solid #e5e5e5;
-// }
-
-// .container-narrow > hr {
-//     margin: 30px 0;
-// }
-
-/* Main marketing message and sign up button */
-// .jumbotron {
-//     text-align: center;
-//     border-bottom: 1px solid #e5e5e5;
-//     .btn {
-//         font-size: 21px;
-//         padding: 14px 24px;
-//     }
-// }
-
-/* Responsive: Portrait tablets and up */
 @media screen and (max-width: 992px) {
     .search-again {
         color: red;
@@ -144,7 +79,7 @@ canvas {
     .search-controls {
         margin: 0 auto;
         position: fixed;
-        background: rgba(238, 238, 238, 0.8);
+        background: rgba(238, 238, 238, 0.9);
         z-index: 100;
         padding: 5px 0;
         top: 0;
@@ -154,7 +89,6 @@ canvas {
     }
     
     .list-viewer {
-        // margin-top: 100px;
         position: static;
         .list-group-item {
             overflow: hidden;
@@ -162,10 +96,8 @@ canvas {
             margin: 10px auto;
                 img {
                     margin-top: -10px;
-                }
-                .title {
-                    // position: absolute;
-                    // background: rgba(245, 245, 245, 0.7);
+                    height: 270px;
+                    //crop and size the image
                 }
         }
     }
